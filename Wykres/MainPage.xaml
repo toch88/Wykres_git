@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="Wykres.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wykres"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cavas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    mc:Ignorable="d"
+    RequestedTheme="Dark" Background="#FF141D29" >
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="DeviceListSource"/>
+    </Page.Resources>
+
+    <Grid RequestedTheme="Dark" Background="#FF141D29" Margin="0,0,0,10" HorizontalAlignment="Right" Width="1280">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+
+
+
+        <TextBlock Foreground="White" Text="Ports Name" Grid.Column="1" FontSize="14px" Margin="15,51,29,20" Grid.Row="1"/>
+
+        <TextBlock Text="Recievieng Data" Foreground="White" FontSize="34px"  Margin="190,29,-441,10" Grid.Column="2"/>
+        <cavas:CanvasControl x:Name="mySurface" Margin="61,0,-712,-253" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="2" BorderBrush="#FFE0C5C5" CreateResources="mySurface_CreateResources" Draw="mySurface_Draw"/>
+        <Button x:Name="connectButtton" Grid.ColumnSpan="2" Content="Connect" HorizontalAlignment="Left" Margin="108,145,0,-145" Grid.Row="1" VerticalAlignment="Top" Click="connectButtton_Click" RenderTransformOrigin="0.08,0.302"/>
+        <Button x:Name="disconnectButton" Grid.ColumnSpan="2" Content="Disconnect" HorizontalAlignment="Left" Margin="217,145,0,-145" Grid.Row="1" VerticalAlignment="Top" Click="disconnect_Click"/>
+
+        <TextBlock Foreground="White" Text="Boud Rate" Grid.Column="1" FontSize="14px" Margin="15,100,29,-29" Grid.Row="1" />
+        <TextBox x:Name="baudRate_text" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="108,100,0,-68" Grid.Row="1" TextWrapping="Wrap" Text="256000" VerticalAlignment="Top" Width="203" TextChanged="textBox_TextChanged" />
+        <ComboBox x:Name="comboBox" ItemsSource="{Binding Source={StaticResource DeviceListSource}}" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="108,51,0,0" Grid.Row="1" VerticalAlignment="Top" Width="203">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" FontSize="11px" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Grid MaxHeight="250" Grid.ColumnSpan="2" Margin="0,294,0,-471" Grid.Row="1" >
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled"/>
+        </Grid>
+        <TextBlock x:Name="status" Grid.Column="1" HorizontalAlignment="Left" Margin="10,347,0,-350" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="320" Height="113"/>
+        <ProgressBar x:Name="progress" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="108,210,0,-142" Grid.Row="1" VerticalAlignment="Top" Width="135"/>
+
+
+
+
+
+
+    </Grid>
+</Page>
