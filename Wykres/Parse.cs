@@ -21,6 +21,7 @@ namespace Wykres
         {
             list = new List<Package>();
             //queOfPackage = new List<Package>();
+            //nowy komentarz
         }
 
         public async Task doParse(string str, params char[] ch)
